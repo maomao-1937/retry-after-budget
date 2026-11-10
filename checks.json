@@ -1,0 +1,26 @@
+[
+  {
+    "name": "delta seconds equal the budget",
+    "args": ["retry_after_budget.py", "examples/delta-at-budget.json"],
+    "exit": 0,
+    "report": {"status": "within_budget", "form": "delta_seconds", "delay_seconds": 120, "expired": false}
+  },
+  {
+    "name": "future date exceeds the budget",
+    "args": ["retry_after_budget.py", "examples/date-over-budget.json"],
+    "exit": 1,
+    "report": {"status": "over_budget", "form": "http_date", "delay_seconds": 180, "expired": false}
+  },
+  {
+    "name": "expired date clamps to zero",
+    "args": ["retry_after_budget.py", "examples/date-expired.json"],
+    "exit": 0,
+    "report": {"status": "within_budget", "form": "http_date", "delay_seconds": 0, "expired": true}
+  },
+  {
+    "name": "obsolete date rejected by the fixture parser",
+    "args": ["retry_after_budget.py", "examples/invalid-obsolete-date.json"],
+    "exit": 2,
+    "report": {"status": "invalid"}
+  }
+]

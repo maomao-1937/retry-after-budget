@@ -1,0 +1,5 @@
+{
+  "retry_after": "000120",
+  "observed_at": "2026-11-10T01:12:00Z",
+  "max_delay_seconds": 120
+}
